@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> 
+    <body {font-family: Arial;}
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #FF0000;
+}
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+h1 {
+   text-align: center;
+}
+p {
+  text-align: center;
+}
+a {
+  text-align: center;
+}
+    
+a {
+ color: black;
+}
+body {
+     background-color: orange;
+}
+</style>
+</head>
+<body>
+    
+<h1>Retronix Craft</h1>
 
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Enchants')">Enchants</button>
+</div>
+
+<div id="Enchants" class="tabcontent">
+  <h2>-- Sword --
+Sharpness V / Smite V / Bane of Arthropods v
+Knockback II
+Fire Aspect II
+Looting III
+Sweeping Edge III
+Unbreaking III
+Mending
+
+-- Pickaxe --
+Efficiency V
+Fortune III / Silk Touch
+Unbreaking III
+Mending
+
+-- Axe --
+Efficiency V
+Sharpness V
+Fortune III / Silk Touch
+Unbreaking III
+Mending
+
+-- Bow --
+Power V
+Punch II
+Flame
+Infinity / Mending (combining was possible until 1.11.1)
+Unbreaking III
+
+-- Trident -- (1.13)
+Loyality III / Riptide III
+Impaling V
+Channeling / Riptide III
+
+-- Helmet --
+Protection IV
+Throns III
+Respiration III
+Aqua Affinity
+Unbreaking III
+Mending
+
+-- Chestplate and Leggings --
+Protection IV
+Throns III
+Unbreaking III
+Mending
+
+-- Boots --
+Protection IV
+Depth Strider III / Frost Walker II
+Feather Falling IV
+Unbreaking III
+Mending</h2>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+     
+</body>
+</html> 
