@@ -3,16 +3,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style> 
-    <body {font-family: Arial;}
+
 /* Style the tab */
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #FF0000;
+    background-image: src="dirt.webp";
 }
 /* Style the buttons inside the tab */
 .tab button {
     background-color: inherit;
+    color: white;
     float: center;
     border: none;
     outline: none;
@@ -33,7 +33,6 @@
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
     border-top: none;
 }
 h2 {
@@ -51,13 +50,26 @@ p {
 a {
   text-align: center;
 }
-    
+
 a {
  color: black;
 }
-body {
-     background-color: green;
+
+h2 {
+    color: white;
 }
+
+h1 {
+    color: white;
+}
+
+body {
+     background-image: url('mc4.jpg');
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+}
+
 </style>
 </head>
 <body>
@@ -70,7 +82,8 @@ body {
   <button class="tablinks" onclick="openCity(event, 'Axe')">Axe</button>
   <button class="tablinks" onclick="openCity(event, 'Bow')">Bow</button>
   <button class="tablinks" onclick="openCity(event, 'Helmet')">Helmet</button>
-  <button class="tablinks" onclick="openCity(event, 'CnL')">Chestplate/Leggings</button>
+  <button class="tablinks" onclick="openCity(event, 'Che')">Chestplate</button>
+  <button class="tablinks" onclick="openCity(event, 'Leg')">Leggings</button>
   <button class="tablinks" onclick="openCity(event, 'Boots')">Boots</button>
   <button class="tablinks" onclick="openCity(event, 'Trident')">Trident</button>
   <button class="tablinks" onclick="openCity(event, 'FR')">Fishing Rod</button>
@@ -79,7 +92,8 @@ body {
 </div>
 
 <div id="Sword" class="tabcontent">
-    <h2>-- Sword --</h2>
+    <img src="sww.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+    <h2>-- Sword --</h2>>
     <h2>Sharpness V / Smite V / Bane of Arthropods v</h2>
     <h2>Knockback II</h2>
     <h2>Fire Aspect II</h2>
@@ -90,6 +104,7 @@ body {
 </div>
 
 <div id="Pickaxe" class="tabcontent">
+   <img src="pic.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Pickaxe --</h2>
    <h2>Efficiency V</h2>
    <h2>Fortune III / Silk Touch</h2>
@@ -98,6 +113,7 @@ body {
 </div>
    
 <div id="Axe" class="tabcontent">
+   <img src="axe.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Axe --</h2>
    <h2>Efficiency V</h2>
    <h2>Sharpness V</h2>
@@ -107,6 +123,7 @@ body {
 </div>
 
 <div id="Bow" class="tabcontent">
+    <img src="bow.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Bow --</h2>
    <h2>Power V</h2>
    <h2>Punch II</h2>
@@ -116,6 +133,7 @@ body {
 </div>
 
 <div id="Helmet" class="tabcontent">
+    <img src="hel.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Helmet --</h2>
    <h2>Protection IV</h2>
    <h2>Throns III</h2>
@@ -125,15 +143,26 @@ body {
    <h2>Mending</h2>
 </div>
     
-<div id="CnL" class="tabcontent">
-   <h2>-- Chestplate/leggings --</h2>
+<div id="Che" class="tabcontent">
+    <img src="che.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Chestplate --</h2>
    <h2>Protection IV</h2>
    <h2>Throns III</h2>
    <h2>Unbreaking III</h2>
    <h2>Mending</h2>
 </div>
     
+<div id="Leg" class="tabcontent">
+    <img src="leg.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+    <h2>-- Leggings --</h2>
+    <h2>Protection Iv</h2>
+    <h2>Thorns III</h2>
+    <h2>Unbreaking III</h2>
+    <h2>Mending</h2>
+</div>
+
 <div id="Boots" class="tabcontent">
+    <img src="bot.gif" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Boots --</h2>
    <h2>Protection IV</h2>
    <h2>Depth Strider III / Frost Walker II</h2>
@@ -143,6 +172,7 @@ body {
 </div>    
     
 <div id="Trident" class="tabcontent"> 
+    <img src="tri.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Trident --</h2>
    <h2>Channeling / Riptide III</h2>
    <h2>Impaling V</h2>
@@ -152,6 +182,7 @@ body {
 </div>
     
 <div id="FR" class="tabcontent">
+    <img src="fis.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Fishing Rod --</h2>
    <h2>Luck Of The Sea III</h2>
    <h2>Lure III</h2>
@@ -160,6 +191,7 @@ body {
 </div>
     
 <div id="CB" class="tabcontent">
+    <img src="cro.webp" alt="centered Image" style="display: block; margin: 0 auto;">
    <h2>-- Crossbow --</h2>
    <h2>Quick Charge III</h2>
    <h2>Multishot / Piercing IV</h2>
@@ -168,6 +200,7 @@ body {
 </div>
 
 <div id="Mace" class="tabcontent">
+    <img src="mace.webp" alt="centered Image" style="display: block; margin: 0 auto;">
     <h2>-- Mace --</h2>
     <h2>Density V / Breach IV / Smite V / Bane Of Arthropods V</h2>
     <h2>Wind Burst III</h2>
