@@ -1,284 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mechanic Service</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> 
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            padding-bottom: 50px; /* Space for footer */
-        }
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-image: src="dirt.webp";
+}
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    color: white;
+    float: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+h1 {
+   text-align: center;
+}
+p {
+  text-align: center;
+}
+a {
+  text-align: center;
+}
 
-        /* Header styling */
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+a {
+ color: black;
+}
 
-        header h1 {
-            font-size: 2.5em;
-        }
+h2 {
+    color: white;
+}
 
-        /* Navigation Bar */
-        nav {
-            background-color: #333;
-            position: relative;
-            width: 100%;
-        }
+h1 {
+    color: white;
+}
 
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-        }
+body {
+     background-image: url('mc4.jpg');
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+}
 
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            padding: 14px;
-        }
-
-        nav ul li a:hover {
-            background-color: #ddd;
-            color: black;
-            border-radius: 5px;
-        }
-
-        /* Section Styling */
-        .slide {
-            display: none;
-            padding: 60px 20px;
-            margin-top: 20px;
-            text-align: center; /* Center all text in the slide */
-        }
-
-        .active-slide {
-            display: block;
-        }
-
-        .services {
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        /* Contact Styling */
-        .contact {
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 40px 20px;
-        }
-
-        .contact h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .contact p {
-            font-size: 1.2em;
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        /* Map Styling */
-        .map-container {
-            width: 100%;
-            height: 300px;
-            margin-top: 20px;
-        }
-
-        /* Service Information Styling */
-        .service-info {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.1em;
-            text-align: center;
-        }
-
-        /* Service Buttons Container */
-        .service-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .service-buttons button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1.2em;
-            transition: background-color 0.3s ease;
-        }
-
-        .service-buttons button:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            section {
-                padding: 40px 10px;
-            }
-
-            .service-buttons {
-                flex-direction: column;
-            }
-        }
-    </style>
+</style>
 </head>
 <body>
+    
+<h1>McEnchants</h1>
 
-    <!-- Header Section -->
-    <header>
-        <h1>SK Bil</h1>
-        <p>dut dut dutdutdut</p>
-    </header>
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Sword')">Sword</button>
+  <button class="tablinks" onclick="openCity(event, 'Pickaxe')">Pickaxe</button>
+  <button class="tablinks" onclick="openCity(event, 'Axe')">Axe</button>
+  <button class="tablinks" onclick="openCity(event, 'Bow')">Bow</button>
+  <button class="tablinks" onclick="openCity(event, 'Helmet')">Helmet</button>
+  <button class="tablinks" onclick="openCity(event, 'Che')">Chestplate</button>
+  <button class="tablinks" onclick="openCity(event, 'Leg')">Leggings</button>
+  <button class="tablinks" onclick="openCity(event, 'Boots')">Boots</button>
+  <button class="tablinks" onclick="openCity(event, 'Trident')">Trident</button>
+  <button class="tablinks" onclick="openCity(event, 'FR')">Fishing Rod</button>
+  <button class="tablinks" onclick="openCity(event, 'CB')">Crossbow</button>
+  <button class="tablinks" onclick="openCity(event, 'Mace')">Mace</button> 
+</div>
 
-    <!-- Navigation Bar (Placed below the header) -->
-    <nav>
-        <ul>
-            <li><a href="javascript:void(0);" onclick="showSlide('home')">Hem</a></li>
-            <li><a href="javascript:void(0);" onclick="showSlide('services')">Jobb</a></li>
-            <li><a href="javascript:void(0);" onclick="showSlide('contact')">Kontakt</a></li>
-        </ul>
-    </nav>
+<div id="Sword" class="tabcontent">
+    <img src="sww.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+    <h2>-- Sword --</h2>>
+    <h2>Sharpness V / Smite V / Bane of Arthropods v</h2>
+    <h2>Knockback II</h2>
+    <h2>Fire Aspect II</h2>
+    <h2>Looting III</h2>
+    <h2>Sweeping Edge III</h2>
+    <h2>Unbreaking III</h2>
+    <h2>Mending</h2>
+</div>
 
-    <!-- Home Slide -->
-    <section id="home" class="slide active-slide">
-        <h1>Välkommen till SK Bil</h1>
-        <p>We offer top-notch car repair and maintenance services. Our experienced mechanics ensure your vehicle runs smoothly and safely on the road.</p>
-    </section>
+<div id="Pickaxe" class="tabcontent">
+   <img src="pic.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Pickaxe --</h2>
+   <h2>Efficiency V</h2>
+   <h2>Fortune III / Silk Touch</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
+   
+<div id="Axe" class="tabcontent">
+   <img src="axe.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Axe --</h2>
+   <h2>Efficiency V</h2>
+   <h2>Sharpness V</h2>
+   <h2>Fortune III / Silk Touch</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
 
-    <!-- Services Slide -->
-    <section id="services" class="slide">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Oil Change and Fluid Check</li>
-            <li>Brake Repair and Replacement</li>
-            <li>Engine Diagnostics and Tune-ups</li>
-            <li>Transmission Services</li>
-            <li>Tire Repair and Replacement</li>
-            <li>Battery Replacement</li>
-            <li>Air Conditioning Repair</li>
-        </ul>
+<div id="Bow" class="tabcontent">
+    <img src="bow.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Bow --</h2>
+   <h2>Power V</h2>
+   <h2>Punch II</h2>
+   <h2>Flame</h2>
+   <h2>Infinity / Mending</h2>
+   <h2>Unbreaking III</h2>
+</div>
 
-        <!-- Buttons for Service Information -->
-        <div class="service-buttons">
-            <button onclick="toggleServiceInfo('service1')">Oil Change and Fluid Check</button>
-            <button onclick="toggleServiceInfo('service2')">Brake Repair and Replacement</button>
-            <button onclick="toggleServiceInfo('service3')">Engine Diagnostics and Tune-ups</button>
-            <button onclick="toggleServiceInfo('service4')">Transmission Services</button>
-        </div>
+<div id="Helmet" class="tabcontent">
+    <img src="hel.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Helmet --</h2>
+   <h2>Protection IV</h2>
+   <h2>Throns III</h2>
+   <h2>Respiration III</h2>  
+   <h2>Aqua Affinity</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
+    
+<div id="Che" class="tabcontent">
+    <img src="che.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Chestplate --</h2>
+   <h2>Protection IV</h2>
+   <h2>Throns III</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
+    
+<div id="Leg" class="tabcontent">
+    <img src="leg.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+    <h2>-- Leggings --</h2>
+    <h2>Protection Iv</h2>
+    <h2>Thorns III</h2>
+    <h2>Unbreaking III</h2>
+    <h2>Mending</h2>
+</div>
 
-        <!-- Hidden Service Info Texts -->
-        <div class="service-info" id="service1">
-            <p>Our oil change service includes checking all fluid levels, replacing the oil filter, and using high-quality oils for maximum engine performance.</p>
-        </div>
+<div id="Boots" class="tabcontent">
+    <img src="bot.gif" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Boots --</h2>
+   <h2>Protection IV</h2>
+   <h2>Depth Strider III / Frost Walker II</h2>
+   <h2>Feather Falling IV</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>    
+    
+<div id="Trident" class="tabcontent"> 
+    <img src="tri.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Trident --</h2>
+   <h2>Channeling / Riptide III</h2>
+   <h2>Impaling V</h2>
+   <h2>Loyalty III</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
+    
+<div id="FR" class="tabcontent">
+    <img src="fis.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Fishing Rod --</h2>
+   <h2>Luck Of The Sea III</h2>
+   <h2>Lure III</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
+    
+<div id="CB" class="tabcontent">
+    <img src="cro.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+   <h2>-- Crossbow --</h2>
+   <h2>Quick Charge III</h2>
+   <h2>Multishot / Piercing IV</h2>
+   <h2>Unbreaking III</h2>
+   <h2>Mending</h2>
+</div>
 
-        <div class="service-info" id="service2">
-            <p>We provide full brake repair services, including disc and drum brake replacement, brake fluid checks, and more to ensure safety on the road.</p>
-        </div>
-
-        <div class="service-info" id="service3">
-            <p>We offer detailed engine diagnostics to identify issues such as misfires, poor fuel efficiency, and perform tune-ups to optimize engine performance.</p>
-        </div>
-
-        <div class="service-info" id="service4">
-            <p>Our transmission services include fluid changes, repairs, and complete overhauls to keep your vehicle shifting smoothly and prevent costly issues.</p>
-        </div>
-    </section>
-
-    <!-- Contact Slide -->
-    <section id="contact" class="slide">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or need to book an appointment, don't hesitate to reach out!</p>
-        <p>Email: contact@abcmechanicservice.com</p>
-        <p>Phone: 123-456-7890</p>
-        <p>Address: 123 Mechanic St., Cityville, ST 12345</p>
-
-        <!-- Embedded Google Map -->
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.110883883577!2d-75.14286758466528!3d39.95248377942317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b606bcb2b5f9%3A0x9e8de7bc703c9035!2s123%20Mechanic%20St.%2C%20Cityville%2C%20ST%2012345!5e0!3m2!1sen!2sus!4v1632873240811!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 ABC Mechanic Service. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        // Function to show the corresponding slide
-        function showSlide(slideId) {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => slide.classList.remove('active-slide'));
-            const activeSlide = document.getElementById(slideId);
-            activeSlide.classList.add('active-slide');
-        }
-
-        // Function to toggle visibility of service information
-        function toggleServiceInfo(serviceId) {
-            const serviceInfo = document.getElementById(serviceId);
-            const allInfo = document.querySelectorAll('.service-info');
-            
-            // Close all service info text
-            allInfo.forEach(info => info.style.display = 'none');
-            
-            // Toggle the clicked service's info
-            if (serviceInfo.style.display === 'block') {
-                serviceInfo.style.display = 'none';
-            } else {
-                serviceInfo.style.display = 'block';
-            }
-        }
-    </script>
-
+<div id="Mace" class="tabcontent">
+    <img src="mace.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+    <h2>-- Mace --</h2>
+    <h2>Density V / Breach IV / Smite V / Bane Of Arthropods V</h2>
+    <h2>Wind Burst III</h2>
+    <h2>Fire Aspect II</h2>
+    <h2>Unbreaking III</h2>
+    <h2>Mending</h2>
+</div>
+    
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+     
 </body>
-</html>
+</html> 
