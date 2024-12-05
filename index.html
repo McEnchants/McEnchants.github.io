@@ -1,229 +1,474 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Style the tab */
-.tab {
-    overflow: hidden;
-    background-image: src="dirt.webp";
-}
-/* Style the buttons inside the tab */
-.tab button {
-    background-color: inherit;
-    color: white;
-    float: center;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #ddd;
-}
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
-}
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border-top: none;
-}
-h2 {
-    text-align: center;
-}
-h3 {
-    text-align: center;
-}
-h1 {
-   text-align: center;
-}
-p {
-  text-align: center;
-}
-a {
-  text-align: center;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-bottom: 50px; /* Space for footer */
+        }
 
-a {
- color: black;
-}
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-h2 {
-    color: white;
-}
+        header h1 {
+            font-size: 2.5em;
+        }
 
-h1 {
-    color: white;
-}
+        nav {
+            background-color: #333;
+            position: relative;
+            width: 100%;
+        }
 
-body {
-     background-image: url('mc4.jpg');
-     background-repeat: no-repeat;
-     background-attachment: fixed;
-     background-size: cover;
-}
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
 
-</style>
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #555;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .active-slide {
+            display: block;
+        }
+
+        .popup-text {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .popup-text.visible {
+            display: block;
+            opacity: 1;
+            max-height: 300px; /* Adjust based on content size */
+        }
+
+        .service-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .service-buttons button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-buttons button:hover {
+            background-color: #555;
+        }
+
+        .additional-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .additional-buttons button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .additional-buttons button:hover {
+            background-color: #666;
+        }
+
+        .extra-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .extra-buttons button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .extra-buttons button:hover {
+            background-color: #777;
+        }
+
+        .extraextra-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .extraextra-buttons button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .extraextra-buttons button:hover {
+            background-color: #777;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    
-<h1>McEnchants</h1>
 
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Sword')">Sword</button>
-  <button class="tablinks" onclick="openCity(event, 'Pickaxe')">Pickaxe</button>
-  <button class="tablinks" onclick="openCity(event, 'Axe')">Axe</button>
-  <button class="tablinks" onclick="openCity(event, 'Bow')">Bow</button>
-  <button class="tablinks" onclick="openCity(event, 'Helmet')">Helmet</button>
-  <button class="tablinks" onclick="openCity(event, 'Che')">Chestplate</button>
-  <button class="tablinks" onclick="openCity(event, 'Leg')">Leggings</button>
-  <button class="tablinks" onclick="openCity(event, 'Boots')">Boots</button>
-  <button class="tablinks" onclick="openCity(event, 'Trident')">Trident</button>
-  <button class="tablinks" onclick="openCity(event, 'FR')">Fishing Rod</button>
-  <button class="tablinks" onclick="openCity(event, 'CB')">Crossbow</button>
-  <button class="tablinks" onclick="openCity(event, 'Mace')">Mace</button> 
-</div>
+    <header>
+        <h1>Minecraft</h1>
+        <p>My Name Is Steve</p>
+    </header>
 
-<div id="Sword" class="tabcontent">
-    <img src="sww.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-    <h2>-- Sword --</h2>>
-    <h2>Sharpness V / Smite V / Bane of Arthropods v</h2>
-    <h2>Knockback II</h2>
-    <h2>Fire Aspect II</h2>
-    <h2>Looting III</h2>
-    <h2>Sweeping Edge III</h2>
-    <h2>Unbreaking III</h2>
-    <h2>Mending</h2>
-</div>
+    <nav>
+        <ul>
+            <li><a href="javascript:void(0);" onclick="showSlide('enchantments', this)" class="active">Enchantments</a></li>
+            <li><a href="javascript:void(0);" onclick="showSlide('potions', this)">Potions</a></li>
+            <li><a href="javascript:void(0);" onclick="showSlide('contact', this)">Contact</a></li>
+        </ul>
+    </nav>
 
-<div id="Pickaxe" class="tabcontent">
-   <img src="pic.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Pickaxe --</h2>
-   <h2>Efficiency V</h2>
-   <h2>Fortune III / Silk Touch</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
-   
-<div id="Axe" class="tabcontent">
-   <img src="axe.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Axe --</h2>
-   <h2>Efficiency V</h2>
-   <h2>Sharpness V</h2>
-   <h2>Fortune III / Silk Touch</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
+    <section id="enchantments" class="slide active-slide">
+        <div class="service-buttons">
+            <button onclick="togglePopup('sword')">Sword</button>
+            <button onclick="togglePopup('pickaxe')">Pickaxe</button>
+            <button onclick="togglePopup('axe')">Axe</button>
+            <button onclick="togglePopup('bow')">Bow</button>
+            <button onclick="togglePopup('helmet')">Helmet</button>
+            <button onclick="togglePopup('chestplate')">Chestplate</button>
+            <button onclick="togglePopup('leggings')">Leggings</button>
+            <button onclick="togglePopup('boots')">Boots</button>
+            <button onclick="togglePopup('trident')">Trident</button>
+            <button onclick="togglePopup('fishingrod')">Fishing Rod</button>
+            <button onclick="togglePopup('crossbow')">Crossbow</button>
+            <button onclick="togglePopup('mace')">Mace</button>
+        </div>
 
-<div id="Bow" class="tabcontent">
-    <img src="bow.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Bow --</h2>
-   <h2>Power V</h2>
-   <h2>Punch II</h2>
-   <h2>Flame</h2>
-   <h2>Infinity / Mending</h2>
-   <h2>Unbreaking III</h2>
-</div>
+        <div class="popup-text" id="sword">
+            <img src="sww.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Sharpness V / Smite V / Bane Of Arthropods V</b></p>
+            <p><b>Knockback II</b></p>
+            <p><b>Fire Aspect II</b></p>
+            <p><b>Looting III</b></p>
+            <p><b>Sweeping Edge III</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
 
-<div id="Helmet" class="tabcontent">
-    <img src="hel.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Helmet --</h2>
-   <h2>Protection IV</h2>
-   <h2>Throns III</h2>
-   <h2>Respiration III</h2>  
-   <h2>Aqua Affinity</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
-    
-<div id="Che" class="tabcontent">
-    <img src="che.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Chestplate --</h2>
-   <h2>Protection IV</h2>
-   <h2>Throns III</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
-    
-<div id="Leg" class="tabcontent">
-    <img src="leg.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-    <h2>-- Leggings --</h2>
-    <h2>Protection Iv</h2>
-    <h2>Thorns III</h2>
-    <h2>Unbreaking III</h2>
-    <h2>Mending</h2>
-</div>
+        <div class="popup-text" id="pickaxe">
+            <img src="pic.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Efficiency V</b></p>
+            <p><b>Fortune III / Silk Touch</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
 
-<div id="Boots" class="tabcontent">
-    <img src="bot.gif" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Boots --</h2>
-   <h2>Protection IV</h2>
-   <h2>Depth Strider III / Frost Walker II</h2>
-   <h2>Feather Falling IV</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>    
-    
-<div id="Trident" class="tabcontent"> 
-    <img src="tri.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Trident --</h2>
-   <h2>Channeling / Riptide III</h2>
-   <h2>Impaling V</h2>
-   <h2>Loyalty III</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
-    
-<div id="FR" class="tabcontent">
-    <img src="fis.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Fishing Rod --</h2>
-   <h2>Luck Of The Sea III</h2>
-   <h2>Lure III</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
-    
-<div id="CB" class="tabcontent">
-    <img src="cro.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-   <h2>-- Crossbow --</h2>
-   <h2>Quick Charge III</h2>
-   <h2>Multishot / Piercing IV</h2>
-   <h2>Unbreaking III</h2>
-   <h2>Mending</h2>
-</div>
+        <div class="popup-text" id="axe">
+            <img src="axe.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Efficiency V</b></p>
+            <p><b>Sharpness V</b></p>
+            <p><b>Fortune III / Silk Touch</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
 
-<div id="Mace" class="tabcontent">
-    <img src="mace.webp" alt="centered Image" style="display: block; margin: 0 auto;">
-    <h2>-- Mace --</h2>
-    <h2>Density V / Breach IV / Smite V / Bane Of Arthropods V</h2>
-    <h2>Wind Burst III</h2>
-    <h2>Fire Aspect II</h2>
-    <h2>Unbreaking III</h2>
-    <h2>Mending</h2>
-</div>
-    
-<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-</script>
-     
+        <div class="popup-text" id="bow">
+            <img src="bow.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Power V</b></p>
+            <p><b>Punch II</b></p>
+            <p><b>Flame</b></p>
+            <p><b>Infinity / Mending</b></p>
+            <p><b>Unbreaking III</b></p>
+        </div>
+
+        <div class="popup-text" id="helmet">
+            <img src="hel.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Protection IV</b></p>
+            <p><b>Thorns III</b></p>
+            <p><b>Respiration III</b></p>
+            <p><b>Aqua Affinity</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="chestplate">
+            <img src="che.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Protection IV</b></p>
+            <p><b>Thorns III</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="leggings">
+            <img src="leg.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Protection IV</b></p>
+            <p><b>Thorns III</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="boots">
+            <img src="bot.gif" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Protection IV</b></p>
+            <p><b>Depth Strider III / Frost Walker II</b></p>
+            <p><b>Feather Falling IV</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="trident">
+            <img src="tri.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Channeling / Riptide III</b></p>
+            <p><b>Impaling V</b></p>
+            <p><b>Loyalty III</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="fishingrod">
+            <img src="fis.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Luck Of The Sea III</b></p>
+            <p><b>Lure III</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="crossbow">
+            <img src="cro.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Quick Charge III</b></p>
+            <p><b>Multishot / Piercing IV</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+        <div class="popup-text" id="mace">
+            <img src="mace.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <p><b>Density V / Breach IV / Smite V / Bane Of Arthropods V</b></p>
+            <p><b>Winde Burst III</b></p>
+            <p><b>Fire Aspect II</b></p>
+            <p><b>Unbreaking III</b></p>
+            <p><b>Mending</b></p>
+        </div>
+
+    </section>
+
+    <section id="potions" class="slide">
+        <div class="service-buttons">
+            <button onclick="togglePopup('awkward')">Awkward Potion</button>
+        </div>
+        
+        <div class="additional-buttons">
+            <button onclick="togglePopup('healing')">Potion Of Healing</button>
+            <button onclick="togglePopup('fireres')">Potion Of Fire Resistance</button>
+            <button onclick="togglePopup('regen')">Potion Of Regeneration</button>
+            <button onclick="togglePopup('strenght')">Potion Of Strength</button>
+            <button onclick="togglePopup('swiftness')">Potion Of Swiftness</button>
+        </div>
+
+        <div class="extra-buttons">
+            <button onclick="togglePopup('night')">Potion Of Night Vision</button>
+            <button onclick="togglePopup('invis')">Potion Of Invisibility</button>
+            <button onclick="togglePopup('water')">Potion Of Water Breathing</button>
+            <button onclick="togglePopup('leap')">Potion Of Leaping</button>
+            <button onclick="togglePopup('fall')">Potion Of Slow Falling</button>
+        </div>
+
+        <div class="extraextra-buttons">
+            <button onclick="togglePopup('pois')">Potion Of Poison</button>
+            <button onclick="togglePopup('weak')">Potion Of Weakness</button>
+            <button onclick="togglePopup('harm')">Potion Of Harming</button>
+            <button onclick="togglePopup('slown')">Potion Of Slowness</button>
+            <button onclick="togglePopup('turtle')">Potion Of The Turtle Master</button>
+        </div>
+
+        <div class="popup-text" id="awkward">
+            <img src="wa.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Nether Wart > Water Bottle = Awkward Potion</b></a>
+        </div>
+
+        <div class="popup-text" id="healing">
+            <img src="heali.jpg" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Glistering Melon Slice > Awkward Potion = Potion Of Healing</b></a>
+        </div>
+
+        <div class="popup-text" id="fireres">
+            <img src="fire.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Magma Cream > Awkward Potion = Potion Of Fire Resistance</b></a>
+        </div>
+        
+        <div class="popup-text" id="regen">
+            <img src="regen.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Ghast Tear > Awkward Potion = Potion Of Regeneration</b></a>
+        </div>
+
+        <div class="popup-text" id="strenght">
+            <img src="stren.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Blaze Powder > Awkward Potion = Potion Of Strength</b></a>
+        </div>
+
+        <div class="popup-text" id="swiftness">
+            <img src="swift.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Sugar > Awkward Potion = Potion Of Swiftness</b></a>
+        </div>
+
+        <div class="popup-text" id="night">
+            <img src="night.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Golden Carrot > Awkward Potion = Potion Of Night Vision</b></a>
+        </div>
+
+        <div class="popup-text" id="invis">
+            <img src="invis.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Fermented Spider Eye > Potion Of Night Vision = Potion Of Invisibility</b></a>
+        </div>
+
+        <div class="popup-text" id="water">
+            <img src="water.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Pufferfish > Awkward Potion = Potion Of Water Breathing</b></a>
+        </div>
+
+        <div class="popup-text" id="leap">
+            <img src="leap.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Rabbit's Foot > Awkward Potion = Potion Of Leaping</b></a>
+        </div>
+
+        <div class="popup-text" id="fall">
+            <img src="fall.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Phantom Membrane > Awkward Potion = Potion Of Slow Falling</b></a>
+        </div>
+
+        <div class="popup-text" id="pois">
+            <img src="pois.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Spider Eye > Awkward Potion = Potion Of Poison</b></a>
+        </div>
+
+        <div class="popup-text" id="weak">
+            <img src="weak.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Fermented Spider Eye > Water Bottle = Potion Of Weakness</b></a>
+        </div>
+
+        <div class="popup-text" id="harm">
+            <img src="harm.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Fermented Spider Eye > Potion Of Healing - Potion Of Poison = Potion Of Harming</b></a>
+        </div>
+
+        <div class="popup-text" id="slown">
+            <img src="slown.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Fermented Spider Eye > Potion Of Swiftness - Potion Of Leaping = Potion Of Slowness</b></a>
+        </div>
+
+        <div class="popup-text" id="turtle">
+            <img src="turtle.webp" alt="centered Image" style="display: block; margin: 0 auto;">
+            <a><b>Turtle Shell > Awkward Potion = Potion Of The Turtle Master</b></a>
+        </div>
+
+    </section>
+
+    <section id="contact" class="slide">
+        <h2>Contact</h2>
+        <p>Email: contact@minecraft.com</p>
+        <p>Phone: 123-456-7890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 NS. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let activePopup = null;
+
+        function showSlide(slideId, element) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active-slide'));
+            document.getElementById(slideId).classList.add('active-slide');
+
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function togglePopup(popupId) {
+            if (activePopup && activePopup !== popupId) {
+                document.getElementById(activePopup).classList.remove('visible');
+            }
+            const popup = document.getElementById(popupId);
+            const isVisible = popup.classList.contains('visible');
+            popup.classList.toggle('visible', !isVisible);
+            activePopup = isVisible ? null : popupId;
+        }
+    </script>
 </body>
-</html> 
+</html>
